@@ -8,7 +8,21 @@ class HolidayController extends Controller
 {
     public function index()
     {
-        return "home";
+        $va = get_IP_address();
+        $countryCode = $va['CountryCode'];
+        $year = $va['year'];
+        $client = new Client();
+        if ($countryCode == "ALL") {
+            $response = $client->get("https://date.nager.at/api/v3/NextPublicHolidaysWorldwide/");
+            $holidays = json_decode($response->getBody(), true);
+            return view('home', ['holidays' => $holidays]);
+        }
+        $response = $client->get("https://date.nager.at/api/v3/PublicHolidays/$year/$countryCode");
+        $holidays = json_decode($response->getBody(), true);
+        $nameRoute = 'next7daysWithC.form';
+        return view('home', ['holidays' => $holidays, 'nameRoute' => $nameRoute]);
+
+
     }
     public function getCountryNames()
     {
@@ -17,11 +31,20 @@ class HolidayController extends Controller
         return $response->getBody();
     }
 
-    public function getCountryHolidaysWithCY($countryCode, $year)
+    public function getCountryHolidaysWithCY(Request $request)
     {
+        $countryCode = $request->query('countryCode'); // e.g., "CA"
+        $year = $request->query('year');
         $client = new Client();
+
+
+
+
         $response = $client->get("https://date.nager.at/api/v3/PublicHolidays/$year/$countryCode");
-        return $response->getBody();
+        $holidays = json_decode($response->getBody(), true);
+
+        return view('home', ['holidays' => $holidays]);
+
     }
 
     public function isHoliday($countryCode, $date)
@@ -33,7 +56,7 @@ class HolidayController extends Controller
 
 
 
-    public function getNext7DaysHoliday($countryCode)
+    public function getNext7DaysHolidayWC($countryCode)
     {
         $client = new Client();
         $response = $client->get("https://date.nager.at/api/v3/NextPublicHolidaysWorldwide");
@@ -44,7 +67,8 @@ class HolidayController extends Controller
             return $country == $countryCode;
         });
         $holidays = $next7DaysHolidays;
-        return view('home', ['holidays' => $holidays]);
+        $nameRoute = 'next7daysWithC.form';
+        return view('home', ['holidays' => $holidays, 'nameRoute' => $nameRoute]);
     }
     public function getNext7DaysHolidays()
     {
