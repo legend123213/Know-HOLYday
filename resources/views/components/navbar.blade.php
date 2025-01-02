@@ -1,14 +1,14 @@
-<ul class="flex">
+<div class="bg-gray-900 h-16 w-full">
+    <ul class="flex p-5">
     <li class="mr-6">
-        <a class="text-blue-500 hover:text-blue-800" href="#">Active</a>
+        <a class="text-white hover:text-blue-800" href="#">Holidays</a>
     </li>
     <li class="mr-6">
-        <a class="text-blue-500 hover:text-blue-800" href="#">Link</a>
+        <a class="text-white hover:text-blue-800" href="#">Next 7 days</a>
     </li>
     <li class="mr-6">
-        <a class="text-blue-500 hover:text-blue-800" href="#">Link</a>
+        <a class="text-white hover:text-blue-800" href="#">Next 365 days</a>
     </li>
-    <li class="mr-6">
-        <a class="text-gray-400 cursor-not-allowed" href="#">Disabled</a>
-    </li>
+    
 </ul>
+</div>
