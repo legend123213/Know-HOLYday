@@ -13,12 +13,13 @@
 <?php
 $nameroute = 'getCountryHolidaysWithCY.form';
 $flag = true;
+$defaultCountry = $holidays[0]['countryCode'] ?? 'US';
 ?>
 
 <body>
     <div class="bg-gray-100">
     <x-navbar />
-<x-filter :nameroute="$nameroute" :flag="$flag" />
+<x-filter :nameroute="$nameroute" :flag="$flag" :defaultCountry="$defaultCountry" />
     <x-card :holidays="$holidays" />
     </div>
 </div>
