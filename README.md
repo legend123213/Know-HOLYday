@@ -8,8 +8,6 @@ Know-HOLYday is a Laravel-based application for managing and viewing holidays.
 
 - PHP >= 7.3
 - Composer
-- Node.js & npm
-- MySQL or any other supported database
 
 ### Installation
 
