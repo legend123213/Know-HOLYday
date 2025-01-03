@@ -4,10 +4,10 @@
         <a class="text-white hover:text-blue-800" href="/">Holidays</a>
     </li>
     <li class="mr-6">
-        <a class="text-white hover:text-blue-800" href="/next7days">Next 7 days</a>
+        <a class="text-white hover:text-blue-800" href="/holidays/next7days">Next 7 days</a>
     </li>
     <li class="mr-6">
-        <a class="text-white hover:text-blue-800" href="/next365days">Next 365 days</a>
+        <a class="text-white hover:text-blue-800" href="/holidays/next365days">Next 365 days</a>
     </li>
     
 </ul>
