@@ -14,11 +14,19 @@
 <?php
 $nameroute = 'getNext1YearHoliday.form';
 $flag = false;
+$defaultCountry = $holidays[0]['countryCode'] ?? 'US';
+
 ?>
 <class="bg-gray-100">
    <x-navbar />
-   <x-filter :flag="$flag" :nameroute="$nameroute" />
-   <x-card :holidays="$holidays" />
+   <x-filter :flag="$flag" :nameroute="$nameroute" :defaultCountry="$defaultCountry" />
+   @if (count($holidays) == 0)
+      <div class="flex justify-center items-center h-96">
+        <h1 class="text-3xl text-gray-500">No holidays found</h1>
+      </div>
+   @else
+      <x-card :holidays="$holidays" />
+@endif
    </div>
    </div>
    </body>
