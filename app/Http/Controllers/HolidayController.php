@@ -26,12 +26,7 @@ class HolidayController extends Controller
 
 
     }
-    public function getCountryNames()
-    {
-        $client = new Client();
-        $response = $client->get('https://date.nager.at/api/v3/AvailableCountries');
-        return json_decode($response->getBody());
-    }
+ 
 
     // controller for getting the holidays in the page using the country code and year in home page using filter 
 
@@ -65,14 +60,6 @@ class HolidayController extends Controller
     }
 
 
-    public function isHoliday(Request $request)
-    {
-        $countryCode = $request->query('countryCode');
-        $client = new Client();
-        $response = $client->get("https://date.nager.at/api/v3/NextPublicHolidays/$countryCode");
-        $holidays = json_decode($response->getBody());
-        return view('next3', ['holidays' => $holidays]);
-    }
 
     // controller for getting the next 7 days holidays in the page using the country code 
 
