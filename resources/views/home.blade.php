@@ -10,12 +10,18 @@
     <script src='main.js'></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<?php
+$nameroute = 'getCountryHolidaysWithCY.form';
+$flag = true;
+?>
 
-<body class="bg-gray-100">
+<body>
+    <div class="bg-gray-100">
     <x-navbar />
+<x-filter :nameroute="$nameroute" :flag="$flag" />
     <x-card :holidays="$holidays" />
     </div>
-    </div>
+</div>
 </body>
 
 </html>
