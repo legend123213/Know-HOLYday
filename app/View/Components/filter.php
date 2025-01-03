@@ -14,6 +14,7 @@ class filter extends Component
     public function __construct(
         public string $nameroute,
         public string $flag,
+        public string $defaultCountry,
     ) {
     }
 
