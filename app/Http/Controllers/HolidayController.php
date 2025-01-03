@@ -30,7 +30,7 @@ class HolidayController extends Controller
     {
         $client = new Client();
         $response = $client->get('https://date.nager.at/api/v3/AvailableCountries');
-        return $response->getBody();
+        return json_decode($response->getBody());
     }
 
     // controller for getting the holidays in the page using the country code and year in home page using filter 
